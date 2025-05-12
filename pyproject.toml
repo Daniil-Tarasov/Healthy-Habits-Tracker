@@ -20,6 +20,7 @@ environs = {extras = ["django"], version = "^14.1.1"}
 eventlet = "^0.39.1"
 django-celery-beat = "^2.8.0"
 djangorestframework-simplejwt = "^5.5.0"
+django-phonenumber-field = {extras = ["phonenumberslite"], version = "^8.1.0"}
 
 
 [build-system]
