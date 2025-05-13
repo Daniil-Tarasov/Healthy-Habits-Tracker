@@ -12,4 +12,4 @@ class UserRegisterSerializer(ModelSerializer):
 class UserSerializer(ModelSerializer):
     class Meta:
         model = User
-        fields = ('tg_chat_id', 'phone_number', 'city', 'avatar')
+        fields = ('tg_chat_id', 'phone_number', 'avatar')
