@@ -3,6 +3,7 @@ from datetime import timedelta
 from django.core.validators import MaxValueValidator
 from django.db import models
 
+from habits.validators import execution_time_validator
 from users.models import User
 
 
@@ -23,7 +24,8 @@ class Habit(models.Model):
     )
     award = models.CharField(max_length=250, verbose_name='Вознаграждение', blank=True, null=True)
     execution_time = models.DurationField(
-        verbose_name='Продолжительность выполнения привычки', default=timedelta(seconds=120)
+        validators=[execution_time_validator], verbose_name='Продолжительность выполнения привычки',
+        default=timedelta(seconds=120)
     )
     published = models.BooleanField(verbose_name='Признак публичности', default=False)
 
