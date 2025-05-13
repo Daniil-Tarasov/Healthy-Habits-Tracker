@@ -1,6 +1,7 @@
 from rest_framework.generics import CreateAPIView, ListAPIView, UpdateAPIView, DestroyAPIView
 
 from habits.models import Habit
+from habits.paginators import HabitsPaginator
 from habits.serializers import HabitSerializer
 
 
@@ -24,6 +25,7 @@ class HabitPublishedListAPIView(ListAPIView):
 class HabitUserListAPIView(ListAPIView):
     queryset = Habit
     serializer_class = HabitSerializer
+    pagination_class = HabitsPaginator
 
     def get_queryset(self):
         user = self.request.user
