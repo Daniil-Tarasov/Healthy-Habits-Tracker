@@ -13,6 +13,7 @@ class HabitCreateAPIView(CreateAPIView):
     def perform_create(self, serializer):
         habit = serializer.save()
         habit.user = self.request.user
+        habit.periodicity_of_sending = habit.periodicity
         habit.save()
 
 

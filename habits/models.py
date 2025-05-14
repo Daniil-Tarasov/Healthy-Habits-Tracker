@@ -28,6 +28,9 @@ class Habit(models.Model):
         default=timedelta(seconds=120)
     )
     published = models.BooleanField(verbose_name='Признак публичности', default=False)
+    periodicity_of_sending = models.PositiveIntegerField(
+        validators=[MaxValueValidator(7)], verbose_name='Периодичность отправки уведомления', default=1
+    )
 
     class Meta:
         verbose_name = 'Привычка',
