@@ -7,13 +7,17 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('habits', '0002_initial'),
+        ("habits", "0002_initial"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='habit',
-            name='periodicity_of_sending',
-            field=models.PositiveIntegerField(default=1, validators=[django.core.validators.MaxValueValidator(7)], verbose_name='Периодичность отправки уведомления'),
+            model_name="habit",
+            name="periodicity_of_sending",
+            field=models.PositiveIntegerField(
+                default=1,
+                validators=[django.core.validators.MaxValueValidator(7)],
+                verbose_name="Периодичность отправки уведомления",
+            ),
         ),
     ]

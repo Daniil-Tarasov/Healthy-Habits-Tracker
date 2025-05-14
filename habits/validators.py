@@ -34,11 +34,7 @@ class FieldFillingValidator:
         nice_habit_field = value.get(self.nice_habit)
 
         if award_field and related_habit_field:
-            raise ValidationError(
-                "Может быть заполнено поле reward или поле related_habit"
-            )
+            raise ValidationError("Может быть заполнено поле reward или поле related_habit")
         if nice_habit_field:
             if award_field or related_habit_field:
-                raise ValidationError(
-                    "У приятной привычки не может быть связанной привычки или вознаграждения"
-                )
+                raise ValidationError("У приятной привычки не может быть связанной привычки или вознаграждения")
