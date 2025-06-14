@@ -18,7 +18,7 @@ class HabitCreateAPIView(CreateAPIView):
 
 
 class HabitPublishedListAPIView(ListAPIView):
-    queryset = Habit
+    queryset = Habit.objects.all()
     serializer_class = HabitSerializer
     permission_classes = [AllowAny]
 
@@ -27,7 +27,7 @@ class HabitPublishedListAPIView(ListAPIView):
 
 
 class HabitUserListAPIView(ListAPIView):
-    queryset = Habit
+    queryset = Habit.objects.all()
     serializer_class = HabitSerializer
     pagination_class = HabitsPaginator
 
@@ -37,11 +37,11 @@ class HabitUserListAPIView(ListAPIView):
 
 
 class HabitUpdateAPIView(UpdateAPIView):
-    queryset = Habit
+    queryset = Habit.objects.all()
     serializer_class = HabitSerializer
     permission_classes = [IsOwner]
 
 
 class HabitDestroyAPIView(DestroyAPIView):
-    queryset = Habit
+    queryset = Habit.objects.all()
     permission_classes = [IsOwner]
