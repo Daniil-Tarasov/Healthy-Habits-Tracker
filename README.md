@@ -13,7 +13,7 @@ git clone https://github.com/Daniil-Tarasov/LMS-systems.git
 
 2. Поскольку проект использует Docker, необходимо установить [Docker](https://www.docker.com/products/docker-desktop/)
 3. Откройте скопированный проект.
-4. Переименуйте файл '.env.smple' в '.env' и внесите необходимые данные переменных окружения
+4. Переименуйте файл '.env.smple' в '.env' и внесите необходимые данные переменных окружения.
 5. Запустите проект командой: ```docker-compose up -d --build```
 6. Для остановки всех контейнеров и их удаления используйте команду ```docker-compose down```
 
