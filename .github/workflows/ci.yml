@@ -7,7 +7,30 @@ on:
       - feature/coursework_ci_cd
 
 jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12'
+
+      - name: Install Poetry
+        uses: snok/install-poetry@v1
+        with:
+          version: '1.5.1'
+
+      - name: Install dependencies
+        run: poetry install
+
+      - name: Run flake8
+        run: poetry run flake8 .
+
   test:
+    needs: lint
     runs-on: ubuntu-latest
     services:
       redis:
@@ -29,8 +52,7 @@ jobs:
           version: '1.5.1'
 
       - name: Install dependencies
-        run: |
-          poetry install
+        run: poetry install
 
       - name: Run tests
         env:
