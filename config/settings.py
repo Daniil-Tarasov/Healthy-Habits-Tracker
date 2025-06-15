@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/5.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
-
+import sys
 from datetime import timedelta
 from pathlib import Path
 
@@ -30,7 +30,7 @@ SECRET_KEY = env.str("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env.bool("DEBUG", default=False)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -87,9 +87,9 @@ WSGI_APPLICATION = "config.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql_psycopg2",
-        "NAME": env("DATABASE_NAME"),
-        "USER": env("DATABASE_USER"),
-        "PASSWORD": env("DATABASE_PASSWORD"),
+        "NAME": env("POSTGRES_DB"),
+        "USER": env("POSTGRES_USER"),
+        "PASSWORD": env("POSTGRES_PASSWORD"),
         "HOST": env("DATABASE_HOST"),
         "PORT": env.int("DATABASE_PORT", 5432),
     }
@@ -146,7 +146,7 @@ REST_FRAMEWORK = {
     ],
 }
 
-CELERY_BROKER_URL = env("CELERY_BROKER")
+CELERY_BROKER_URL = env("CELERY_BROKER_URL")
 
 CELERY_RESULT_BACKEND = env("CELERY_RESULT_BACKEND")
 
@@ -174,3 +174,11 @@ CORS_ALLOW_ALL_ORIGINS = False
 
 TG_URL = "https://api.telegram.org/bot"
 TG_TOKEN = env("TG_TOKEN")
+
+if 'test' in sys.argv:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'test_db.sqlite3',
+        }
+    }
